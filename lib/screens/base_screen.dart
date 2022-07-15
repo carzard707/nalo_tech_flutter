@@ -309,9 +309,8 @@ class _BaseScreenState extends State<BaseScreen> {
                           InkWell(
                             onTap: () async {
                               if (phoneNumberID.isNotEmpty) {
-                                var response = await Dio().post(
-                                    '${backendIP}fetchPhoneNumber',
-                                    data: {'phoneNumberID': phoneNumberID});
+                                var response = await Dio().get(
+                                    '${backendIP}fetchPhoneNumber?phoneNumberID=$phoneNumberID');
                                 if (response.data!='Phone number does not exist!') {
                                   setState(() {
                                     fetchedNumber = response.data;
