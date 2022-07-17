@@ -9,11 +9,12 @@ class PaginationScreen extends StatefulWidget {
 }
 
 class _PaginationScreenState extends State<PaginationScreen> {
+  String backendIP = 'http://10.0.2.2:3030/'; //insert address of the backend ending with forwardSlash
   int currentPage = 1, totalNumOfpages = 0;
   Future<List> getPosts() async {
     try {
       var response = await Dio()
-          .get("http://10.0.2.2:3030/getAllPhoneNumbers?page=$currentPage");
+          .get("${backendIP}getAllPhoneNumbers?page=$currentPage");
       setState(() {
         totalNumOfpages = response.data['totalNumberOfPages'];
       });
